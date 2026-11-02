@@ -1,4 +1,16 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/buyback",
+      "destination": "/sell-your-phone",
+      "permanent": false
+    },
+    {
+      "source": "/buyback-thank-you",
+      "destination": "/sell-thank-you",
+      "permanent": false
+    }
+  ]
 }
