@@ -55,6 +55,15 @@ ul.info li{margin:8px 0}
 .service-band{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand-2);border-radius:var(--radius);padding:26px}
 .quote-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 30px rgba(4,22,93,.06)}
 .quote-card iframe{display:block;min-height:560px}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;max-width:620px;box-shadow:0 8px 30px rgba(4,22,93,.06)}
+.form-card label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.form-card .f{margin-bottom:16px}
+.form-card input,.form-card select,.form-card textarea{width:100%;box-sizing:border-box;padding:12px 14px;font-size:15px;border:1px solid #cfd4e2;border-radius:8px;background:#fff;color:var(--ink);font-family:inherit}
+.form-card textarea{min-height:90px;resize:vertical}
+.form-card .hp{position:absolute;left:-9999px;top:-9999px}
+.form-card button{width:100%;cursor:pointer}
+.form-card .status{font-size:14px;margin-top:12px;text-align:center}
+.form-card .fine{font-size:13px;color:var(--muted);margin:10px 0 0}
 .disclaimer{background:#fff8ec;border:1px solid #f3dcb3;border-radius:var(--radius);padding:20px 22px;margin-top:18px}
 .site-footer{background:var(--ink);color:#c9cfe4;padding:46px 0 24px;font-size:15px}
 .site-footer h4{color:#fff;font-size:15px;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px}
@@ -131,34 +140,20 @@ ul.info li{margin:8px 0}
 
 <section class="alt" id="quote"><div class="wrap">
   <h2>Get a quote</h2>
-  <p class="sub">Choose your device and what you need, then pick how you want to receive your quote. You can also call us at <a href="tel:+13433217099">(343) 321-7099</a>.</p>
-  <div class="quote-card">
-<iframe
-id="widget_HaQaNts9epXvmkQ9BzQK"
-src="https://widget.repairlift.biz/widget/HaQaNts9epXvmkQ9BzQK?BrandName=iPro%20Cellular%20Ottawa&data-thanks-url=https%3A%2F%2Fiprocellularottawa.repairlift.site%2Finstant-quote-ga-thank-you-ottowa&data-campaign=google-ads"
-width="100%"
-frameborder="no"
-scrolling="no"
-allow="geolocation"
-title="Get a quote - iPro Cellular"
-data-thanks-url="https://iprocellularottawa.repairlift.site/instant-quote-ga-thank-you-ottowa">
-</iframe>
-<script>
-(function(){
-var urlParams = new URLSearchParams(window.location.search);
-var mod = urlParams.get('model'), loc = urlParams.get('location');
-var el = document.getElementById('widget_HaQaNts9epXvmkQ9BzQK');
-var src = el.getAttribute('src');
-if (mod) { src += '&model=' + encodeURIComponent(mod) + (loc ? '&location=' + encodeURIComponent(loc) : ''); }
-['campaign','fbclid','gclid','device','lang'].forEach(function(k){ var v = urlParams.get(k); if (v) src += '&' + k + '=' + encodeURIComponent(v); });
-src += '&from=' + window.location.href;
-el.setAttribute('src', src);
-window.addEventListener('message', function (e) {
-  if (typeof e.data !== 'string') return;
-  if (e.data.indexOf('WIDGET_CONTENT_CHANGED') === 0) { el.style.height = e.data.split('|')[1]; }
-}, false);
-})();
-</script>
+  <p class="sub">Tell us about your device and what you need, and we will get back to you with a quote. You can also call us at <a href="tel:+13433217099">(343) 321-7099</a> or walk in during business hours.</p>
+  <div class="form-card">
+    <form id="ipro-quote-form" novalidate>
+      <div class="f"><label for="q-name">Full name *</label><input type="text" id="q-name" name="full_name" required autocomplete="name"></div>
+      <div class="f"><label for="q-phone">Phone *</label><input type="tel" id="q-phone" name="phone" required autocomplete="tel"></div>
+      <div class="f"><label for="q-email">Email *</label><input type="email" id="q-email" name="email" required autocomplete="email"></div>
+      <div class="f"><label for="q-need">What do you need? *</label><select id="q-need" name="need" required><option value="">Choose one</option><option>Sell a device</option><option>Buy a device</option><option>Device service</option></select></div>
+      <div class="f"><label for="q-device">Device *</label><input type="text" id="q-device" name="device_model" placeholder="e.g. iPhone 15 Pro, iPad Air, MacBook Pro" required></div>
+      <div class="f"><label for="q-issue">Details (optional)</label><textarea id="q-issue" name="issue" placeholder="Condition, storage, or what needs fixing"></textarea></div>
+      <div class="f hp" aria-hidden="true"><label for="q-hp">Leave this blank</label><input type="text" id="q-hp" name="honeypot" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-form-type="other"></div>
+      <button type="submit" class="btn">Get my quote</button>
+      <p class="status" id="q-status"></p>
+      <p class="fine">By sending this form you agree to be contacted by iPro Cellular about your request. See our <a href="/privacy-policy">Privacy Policy</a>.</p>
+    </form>
   </div>
 </div></section>
 
@@ -220,5 +215,24 @@ window.addEventListener('message', function (e) {
   <div class="legal">iPro Cellular is an independent, locally operated business and is not affiliated with, endorsed by or authorized by Apple, Samsung, Google, Motorola, LG or any other manufacturer. All trademarks belong to their respective owners. &copy; <span class="yr">2026</span> iPro Cellular. All rights reserved.<br><br>This promotional website is operated on behalf of iPro Cellular, located at 16-1010 Polytek St, Ottawa, ON K1J 9H9. Website hosting, marketing and customer inquiry technology are provided by RepairOps.AI (formerly RepairLift). Products, services, pricing and customer transactions are provided by iPro Cellular.</div>
 </div></footer>
 <script>document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+<script>
+(function(){
+  var THANK_YOU='/instant-quote-ga-thank-you-ottowa';
+  var form=document.getElementById('ipro-quote-form'), statusEl=document.getElementById('q-status');
+  if(!form) return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var raw=Object.fromEntries(new FormData(form).entries());
+    var hp=raw.honeypot; delete raw.honeypot;
+    if(!raw.full_name||!raw.phone||!raw.email||!raw.need||!raw.device_model){statusEl.textContent='Please fill in your name, phone, email, what you need and your device.';statusEl.style.color='#c0392b';return;}
+    var details=raw.issue?(raw.need+': '+raw.issue):raw.need;
+    var payload={public_form_key:'ecffea12-0841-4e79-b137-98923ea145ce',honeypot:hp||'',location_key:'ChIJpxAht8ESeWMRUH0y4ninN_c',location_name:'iPro Cellular Ottawa',page_url:window.location.href,page_title:document.title,fields:{full_name:raw.full_name,email:raw.email,phone:raw.phone,device_model:raw.device_model,issue:details}};
+    statusEl.textContent='Sending...';statusEl.style.color='var(--muted)';
+    fetch('/api/submit-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){if(!r.ok)throw new Error('fail');form.reset();window.location.href=THANK_YOU;})
+      .catch(function(){statusEl.textContent='Something went wrong. Please call us at (343) 321-7099.';statusEl.style.color='#c0392b';});
+  });
+})();
+</script>
 </body>
 </html>
